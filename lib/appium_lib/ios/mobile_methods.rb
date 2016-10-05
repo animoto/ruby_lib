@@ -8,9 +8,7 @@ module Appium
       #    find_elements :uiautomation, 'elements()
       #   ```
       def extended(_mod)
-        Selenium::WebDriver::SearchContext.class_eval do
-          Selenium::WebDriver::SearchContext::FINDERS[:uiautomation] = '-ios uiautomation'
-        end
+        Appium::Device::FINDERS[:uiautomation] = '-ios uiautomation'
       end
     end # class << self
   end # module Ios
