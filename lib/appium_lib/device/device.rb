@@ -376,7 +376,8 @@ module Appium
           def find_element_with_appium(*args)
             how, what = extract_args(args)
 
-            by = ::Appium::Device::FINDERS[how.to_sym]
+            finders = ::Selenium::WebDriver::SearchContext::FINDERS.merge ::Appium::Device::FINDERS
+            by = finders[how.to_sym]
             fail ArgumentError, "cannot find element by #{how.inspect}" unless by
 
             begin
@@ -389,7 +390,8 @@ module Appium
           def find_elements_with_appium(*args)
             how, what = extract_args(args)
 
-            by = ::Appium::Device::FINDERS[how.to_sym]
+            finders = ::Selenium::WebDriver::SearchContext::FINDERS.merge ::Appium::Device::FINDERS
+            by = finders[how.to_sym]
             fail ArgumentError, "cannot find element by #{how.inspect}" unless by
 
             begin
